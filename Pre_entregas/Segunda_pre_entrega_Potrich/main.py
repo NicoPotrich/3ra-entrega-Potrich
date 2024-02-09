@@ -1,17 +1,20 @@
+from pack1.crear_instancias import create_instance
 from pack1.class_clientes import Client, Client_vip
 from pack1.primera_pre_entrega import login
 import json
 import os
 
-
+'''
 client1 = Client("Francisco", "Borda", 35, "francisco@borda.com")
 client2 = Client_vip("Matias", "Pisano", 35, "matias@pissano.com", "gold")
 client3 = Client_vip("Nicolas", "Potrich", 35, "nicolas@potrich.com", "platinum")
-
-clients = [client1, client2, client3]
+'''
+clients = []
 
 
 def start_program():
+    create_instance()
+
     print("""
     +-----------------------------------------+
     |Welcome, what do you want to do?         |
