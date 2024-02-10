@@ -264,42 +264,42 @@ def main ():
     Main function to run the program.
     """
     print("First, to start the program you must login as the root user.")
-    #if login() == 'User login':
-    create_instances()
+    if login() == 'User login':
+        create_instances()
 
-    while True:
-        
-        start_program()
-        
-        opcion = input('Option: ')
-        print("")
-        
-        if opcion == '1':
-            add_client()
-        elif opcion == '2':
-            list_clients()
-        elif opcion == '3':
-            del_client()
-        elif opcion == '4':
-            sell_product()
-        elif opcion == '5':
-            apply_discount()
-        elif opcion == '6':
-            return_product()
-        elif opcion == '7':
-            print("You have been logged out. Have a great day!")
+        while True:
+            
+            start_program()
+            
+            opcion = input('Option: ')
             print("")
-            break
-        else:
-            print('Incorrect option.')
-            print("")
-        
-        continuar = input('Do you want to continue operating? (y/n) ').lower()
-        if continuar != "y":
-            print("")
-            print("You have been logged out. Have a great day!")
-            print("")
-            break
+            
+            if opcion == '1':
+                add_client()
+            elif opcion == '2':
+                list_clients()
+            elif opcion == '3':
+                del_client()
+            elif opcion == '4':
+                sell_product()
+            elif opcion == '5':
+                apply_discount()
+            elif opcion == '6':
+                return_product()
+            elif opcion == '7':
+                print("You have been logged out. Have a great day!")
+                print("")
+                break
+            else:
+                print('Incorrect option.')
+                print("")
+            
+            continuar = input('Do you want to continue operating? (y/n) ').lower()
+            if continuar != "y":
+                print("")
+                print("You have been logged out. Have a great day!")
+                print("")
+                break
 
 if __name__ == "__main__":
     main()
