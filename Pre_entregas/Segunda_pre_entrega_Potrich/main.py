@@ -12,8 +12,41 @@ client3 = Client_vip("Nicolas", "Potrich", 35, "nicolas@potrich.com", "platinum"
 clients = []
 
 
+def create_instance():
+    path = "/home/lordestel88/cursos/Coderhouse/Pre_entregas/Segunda_pre_entrega_Potrich/"
+    db_file = path + "db.json"
+
+    if os.path.exists(db_file):
+        with open(db_file, "r") as file:
+            data = json.load(file)
+    else:
+        data = {"clients": []}
+
+    clients = []
+
+    for client_data in data["clients"]:
+        if "nivel" in client_data:
+            client = Client_vip(
+                client_data["name"],
+                client_data["last_name"],
+                client_data["age"],
+                client_data["email"],
+                client_data["level"]
+            )
+        else:
+            client = Client(
+                client_data["name"],
+                client_data["last_name"],
+                client_data["age"],
+                client_data["email"]
+            )
+
+def create_instances():
+    clients_data = load_clients_from_file()
+    clients = [create_instance(client_data) for client_data in clients_data]
+    return clients
+
 def start_program():
-    create_instance()
 
     print("""
     +-----------------------------------------+
