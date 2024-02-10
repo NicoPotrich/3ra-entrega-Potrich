@@ -169,6 +169,13 @@ def get_client_index():
         return None
 
 def del_client():
+    """
+    Prompt the user to select a client to delete from the database.
+
+    This function lists all the clients, prompts the user to select a client
+    by index, confirms the deletion, and then deletes the selected client from
+    the database file.
+    """
     try:
         list_clients()
         client_index = get_client_index()
