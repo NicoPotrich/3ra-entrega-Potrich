@@ -3,11 +3,6 @@ from pack1.primera_pre_entrega import login
 import json
 import os
 
-'''
-client1 = Client("Francisco", "Borda", 35, "francisco@borda.com")
-client2 = Client_vip("Matias", "Pisano", 35, "matias@pissano.com", "gold")
-client3 = Client_vip("Nicolas", "Potrich", 35, "nicolas@potrich.com", "platinum")
-'''
 
 def load_clients_from_file():
     """
@@ -51,7 +46,7 @@ def create_instance(client_data):
     Returns:
         Client: Instance of Client or Client_vip class.
     """
-    if "nivel" in client_data:
+    if client_data["level"] == "gold" or client_data["level"] == "platinum":
         client = Client_vip(
             client_data["name"],
             client_data["last_name"],
@@ -89,10 +84,11 @@ def start_program():
     +-----------------------------------------+
     | 1. Add client                           |
     | 2. Lists clients                        |
-    | 3. Sell product                         |
-    | 4. Appy discount (only for VIP persons) |
-    | 5. Return product                       |
-    | 6. Logout                               |
+    | 3. Delete client                        |
+    | 4. Sell product                         |
+    | 5. Appy discount (only for VIP persons) |
+    | 6. Return product                       |
+    | 7. Logout                               |
     +-----------------------------------------+
     """)
 
@@ -104,6 +100,7 @@ def list_clients():
     print("Clients:")
     for i, client in enumerate(clients):
         print(f"\t{i+1}. {client.last_name} {client.name}")
+    print("")
 
 def get_client():
     """
@@ -136,12 +133,14 @@ def add_client():
         last_name = input('Last name: ').title()
         age = input('Age: ')
         email = input('Email: ')
+        level = input('Level (regular/gold/platinum): ')
         
         client_data = {
             "name": name,
             "last_name": last_name,
             "age": age,
-            "email": email
+            "email": email,
+            "level": level
         }
 
         clients_data = load_clients_from_file()
@@ -157,6 +156,43 @@ def add_client():
         print("\nInvalid age. Please enter a valid integer.")
     except Exception as e:
         print(f"\nAn error occurred while adding the client: {e}")
+
+def get_client_index():
+    """
+    Prompt the user to input the index of the client and return the selected index.
+    """
+    try:
+        client_index = int(input("Enter the index of the client: ")) - 1
+        return client_index
+    except ValueError:
+        print("\nPlease enter a valid integer for the client index.")
+        return None
+
+def del_client():
+    try:
+        list_clients()
+        client_index = get_client_index()
+
+        if client_index is None:
+            return
+
+        clients_data = load_clients_from_file()
+
+        confirm = input("Are you sure you want to delete this client? (y/n): ").lower()
+        if confirm != "y":
+            print("Deletion canceled.")
+            print("")
+            return
+
+        del clients_data[client_index]
+
+        save_clients_to_file(clients_data)
+        
+        print("Client successfully deleted.")
+        print("")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 def sell_product():
     """
@@ -236,12 +272,14 @@ def main ():
         elif opcion == '2':
             list_clients()
         elif opcion == '3':
-            sell_product()
+            del_client()
         elif opcion == '4':
-            apply_discount()
+            sell_product()
         elif opcion == '5':
-            return_product()
+            apply_discount()
         elif opcion == '6':
+            return_product()
+        elif opcion == '7':
             print("You have been logged out. Have a great day!")
             print("")
             break
@@ -251,6 +289,9 @@ def main ():
         
         continuar = input('Do you want to continue operating? (y/n) ').lower()
         if continuar != "y":
+            print("")
+            print("You have been logged out. Have a great day!")
+            print("")
             break
 
 if __name__ == "__main__":
