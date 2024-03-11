@@ -6,12 +6,12 @@
 
     <h1>Tareas</h1>
 
-    {% include 'todo/partials/search.html' %}
+    {% include 'task/partials/search.html' %}
 
     <span class="aux-btns">
-        <a href="{% url 'todo' %}">Ver todos</a> 
+        <a href="{% url 'task' %}">Ver todos</a> 
         <a 
-            href="{% url 'todo_create' %} " 
+            href="{% url 'task_create' %} " 
             class="btn btn-primary" 
             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
             ><i class="fa-solid fa-plus" title="Create Record"></i>
@@ -19,24 +19,24 @@
     </span>
     <hr class="line-table">
         <ul class="list">
-            {% for todo in todos %}
+            {% for task in tasks %}
                 <hr class="line-table">
-                    <li> {{ todo }} 
+                    <li> {{ task }} 
                         <span>
                             <a
-                                href="{% url 'todo_view' id=todo.id %}"
+                                href="{% url 'task_view' id=task.id %}"
                                 class="btn btn-primary"
                                 style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                                 ><i class="fa-sharp fa-thin fa-newspaper" title="Detail Record"></i>
                             </a>
                             <a
-                                href="{% url 'todo_edit' id=todo.id %}"
+                                href="{% url 'task_edit' id=task.id %}"
                                 class="btn btn-primary"
                                 style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                                 ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
                             </a>
                             <a
-                                href="{% url 'todo_delete' todo.id %}"
+                                href="{% url 'task_delete' task.id %}"
                                 class="btn btn-danger"
                                 style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                                 ><i class="fa fa-trash fa-sm" title="Delete Record"></i>

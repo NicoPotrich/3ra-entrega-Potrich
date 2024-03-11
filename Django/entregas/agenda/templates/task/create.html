@@ -16,14 +16,14 @@
 
 {% block content %} 
 
-    <form action="{% url 'todo_create' %}" method="POST">
+    <form action="{% url 'task_create' %}" method="POST">
         {% csrf_token %}
         <table>
             {{ form.as_table }}
         </table>
         <div class="btn-wrapper">
             <input type="submit" value="Enviar" class="btn-send">
-            <span class="aux-btns-form"><a href="{% url 'todo' %}">Volver atras</a></span>
+            <span class="aux-btns-form"><a href="{% url 'task' %}">Volver atras</a></span>
         </div>
     </form>
 {% endblock content %} 

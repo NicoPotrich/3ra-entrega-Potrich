@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import date
 
-class Todo(models.Model):
+class Task(models.Model):
     title = models.CharField(max_length=100, blank=False, null=False)
     description = models.TextField(blank=True, null=True)
     date = models.DateField(default=date.today)

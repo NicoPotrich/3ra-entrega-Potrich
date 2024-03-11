@@ -1,9 +1,9 @@
 from django.forms import DateInput, ModelForm
-from .models import Todo
+from .models import Task
 
-class TodoForm(ModelForm):
+class TaskForm(ModelForm):
     class Meta:
-        model = Todo
+        model = Task
         exclude = ('date',)
         widgets = {
             'estimated_end': DateInput(attrs={'type': 'date'})

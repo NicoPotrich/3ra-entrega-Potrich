@@ -6,31 +6,31 @@ from django.contrib import messages
 from django.views.generic import DeleteView
 
 def index(request):
-    todos = Todo.objects.filter(title__contains=request.GET.get('search', ''))
+    tasks = Task.objects.filter(title__contains=request.GET.get('search', ''))
     context = {
-        'todos': todos
+        'tasks': tasks
     }
-    return render(request, 'todo/index.html', context)
+    return render(request, 'task/index.html', context)
 
 def view(request, id):
-    todo = Todo.objects.get(id=id)
+    task = Task.objects.get(id=id)
     context = {
-        'todo': todo
+        'task': task
     }
-    return render(request, 'todo/detail.html', context)
+    return render(request, 'task/detail.html', context)
 
 def edit(request, id):
-    todo = Todo.objects.get(id=id)
+    task = Task.objects.get(id=id)
 
     if request.method == 'GET':
-        form = TodoForm(instance=todo)
+        form = TaskForm(instance=task)
         context = {
             'form': form,
             'id': id
         }
-        return render(request, 'todo/edit.html', context)
+        return render(request, 'task/edit.html', context)
     elif request.method == 'POST':
-        form = TodoForm(request.POST, instance=todo)
+        form = TaskForm(request.POST, instance=task)
         if form.is_valid():
             form.save()
         messages.success(request, 'Tarea actualizada')
@@ -38,24 +38,24 @@ def edit(request, id):
             'form': form,
             'id': id
         }
-        return render(request, 'todo/edit.html', context)
+        return render(request, 'task/edit.html', context)
 
 def create(request):
     if request.method == "GET":
-        form = TodoForm()
+        form = TaskForm()
         context = {
             'form': form
         }
-        return render(request, 'todo/create.html', context)
+        return render(request, 'task/create.html', context)
     elif request.method == "POST":
-        form = TodoForm(request.POST)
+        form = TaskForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('todo')
+        return redirect('task')
 
 class Delete(DeleteView):
-    model = Todo
-    success_url = reverse_lazy('todo') 
+    model = Task
+    success_url = reverse_lazy('task') 
 
 
 
