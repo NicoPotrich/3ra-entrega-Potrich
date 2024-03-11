@@ -1,6 +1,7 @@
 # Agenda de Django
 
 Este es un proyecto de agenda desarrollado en Django que permite gestionar contactos, tareas y reuniones.
+Este proyecto se enfoca principalmente en el backend, con una mínima parte del frontend. La mayoría de las funcionalidades y lógica están implementadas en el backend utilizando Django y Python, mientras que el frontend consiste principalmente en plantillas HTML simples para representar los datos.
 
 ## Características
 
@@ -28,10 +29,6 @@ Otros archivos importantes incluyen:
 - `settings.py`: Configuración del proyecto Django.
 - `urls.py`: Definición de las URL del proyecto.
 - `templates/`: Plantillas HTML para las vistas.
-
-## Backend vs. Frontend
-
-Este proyecto se enfoca principalmente en el backend, con una mínima parte del frontend. La mayoría de las funcionalidades y lógica están implementadas en el backend utilizando Django y Python, mientras que el frontend consiste principalmente en plantillas HTML simples para representar los datos.
 
 ## Instalación y Uso
 
