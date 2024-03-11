@@ -12,11 +12,17 @@
 {% block content %} 
 
     <ul class="list">
+        <hr class="line-table">
         <li><b>Titulo:</b> {{ todo.title }} </li>
+        <hr class="line-table">
         <li><b>Descripcion:</b> {{ todo.description }} </li>
+        <hr class="line-table">
         <li><b>Fecha de creacion:</b> {{ todo.date }} </li>
+        <hr class="line-table">
         <li><b>Fecha de finalizacion estimada:</b> {{ todo.estimated_end }} </li>
+        <hr class="line-table">
         <li><b>Prioridad(1...5):</b> {{ todo.priority }} </li>
+        <hr class="line-table">
     </ul>
     <span class="aux-btns"><a href="{% url 'todo' %}">Volver atras</a></span>
 

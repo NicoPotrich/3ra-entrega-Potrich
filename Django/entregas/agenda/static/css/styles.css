@@ -11079,6 +11079,12 @@ main {
   text-decoration: none;
 }
 
+.btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 68vh;
+}
+
 .alert-success {
   width: 88%;
   padding: 10px;

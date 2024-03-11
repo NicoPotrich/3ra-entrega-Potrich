@@ -8,7 +8,16 @@
 
     {% include 'todo/partials/search.html' %}
 
-    <span class="aux-btns"><a href="{% url 'todo' %}">Ver todas</a> <a href="{% url 'todo_create' %}">Añadir</a></span>
+    <span class="aux-btns">
+        <a href="{% url 'todo' %}">Ver todos</a> 
+        <a 
+            href="{% url 'todo_create' %} " 
+            class="btn btn-primary" 
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+            ><i class="fa-solid fa-plus" title="Create Record"></i>
+        </a>
+    </span>
+    <hr class="line-table">
         <ul class="list">
             {% for todo in todos %}
                 <hr class="line-table">
